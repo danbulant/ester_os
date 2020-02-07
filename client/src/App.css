@@ -10,3 +10,14 @@
   width: 100%;
   height: 50px;
 }
+
+.desktop {
+  padding: 15px;
+}
+
+.login {
+  transition: backdrop-filter;
+}
+.login.active {
+  backdrop-filter: blur(15px);
+}
