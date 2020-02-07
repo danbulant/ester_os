@@ -5,8 +5,20 @@ import "../../App.css";
 class Login extends React.Component{
     constructor(p){
         super(p)
+        let date = new Date();
+        setTimeout(() => {
+            let date = new Date();
+            let time = date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
+            this.state = {
+                time
+            };
+            setInterval(this, 60000);
+        }, (60 - date.getSeconds()) * 1000);
+
+        let time = date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
         this.state = {
-            login: false
+            login: false,
+            time
         };
     }
     componentDidMount(){
@@ -31,11 +43,12 @@ class Login extends React.Component{
         document.addEventListener("keydown", showLogin);
     }
     render(props){
+        var time = this.state.time;
         if (this.state.login) {
             return (
                 <div id="loginPage" className="login active">
                     <div className="time active">
-                        00:00
+                        {time}
                     </div>
                     <div className="user active">
                         <div className="avatar-holder">
@@ -51,16 +64,9 @@ class Login extends React.Component{
         return (
             <div id="loginPage" className="login">
                 <div className="time">
-                    20:48
-                    Press ENTER to open login
+                    {time}
                 </div>
                 <div className="user">
-                    <div className="avatar-holder">
-                        <img className="avatar" alt="avatar" />
-                    </div>
-                    <div className="password-holder">
-                        <input type="password" className="password" />
-                    </div>
                 </div>
             </div>
         );
