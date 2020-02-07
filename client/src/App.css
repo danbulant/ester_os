@@ -1,8 +1,12 @@
 html, body, #root {
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
+body {
+  background: url("https://picsum.photos/1366/768.webp");
+}
 .navbar {
   position: fixed;
   bottom: 0;
@@ -30,8 +34,10 @@ html, body, #root {
 }
 
 .login .time {
+  position: fixed;
+  bottom: 5px;
+  left: 10px;
   transition: bottom 1s, opacity 1s;
-  height: 100%;
   opacity: 1;
   text-align: left;
   vertical-align: bottom;
@@ -48,9 +54,14 @@ html, body, #root {
   opacity: 0;
   transition: opacity 1s, height 1s;
   height: 0;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .login .user.active {
   opacity: 1;
   height: 100%;
+}
+.login .user .password-holder .username {
+  top: 30%;
 }
