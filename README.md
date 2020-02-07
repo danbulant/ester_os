@@ -1,2 +1,2 @@
-# ester_os
-A web-based OS, designed to work out-of-the-box everywhere
+# Ester os
+A web-based OS, designed to work out-of-the-box everywhere.
