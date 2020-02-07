@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/danbulant/ester_os/issues"
   },
-  "homepage": "https://github.com/danbulant/ester_os#readme"
+  "homepage": "https://github.com/danbulant/ester_os#readme",
+  "devDependencies": {
+    "babel-loader": "^8.0.6",
+    "file-loader": "^5.0.2",
+    "react-hot-loader": "^4.12.19",
+    "webpack": "^4.41.5",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "react": "^16.12.0"
+  }
 }
