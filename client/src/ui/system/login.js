@@ -24,8 +24,8 @@ class Login extends React.Component{
     componentDidMount(){
         let loginPage = document.getElementById("loginPage");
 
-        let time = loginPage.getElementsByClassName("time")[0];
-        let user = loginPage.getElementsByClassName("user")[0];
+        //let time = loginPage.getElementsByClassName("time")[0];
+        //let user = loginPage.getElementsByClassName("user")[0];
 
         let cl = this;
         function showLogin(e) {
