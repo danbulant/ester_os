@@ -6,13 +6,13 @@ class Login extends React.Component{
     constructor(p){
         super(p)
         let date = new Date();
-        setTimeout(() => {
+        setTimeout(function func(){
             let date = new Date();
             let time = date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
             this.state = {
                 time
             };
-            setInterval(this, 60000);
+            setInterval(func, 60000);
         }, (60 - date.getSeconds()) * 1000);
 
         let time = date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0");
