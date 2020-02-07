@@ -56,6 +56,7 @@ class Login extends React.Component{
                         </div>
                         <div className="password-holder">
                             <input type="text" className="username" id="loginPage-username" />
+                            <br />
                             <input type="password" className="password" id="loginPage-password" />
                         </div>
                     </div>
