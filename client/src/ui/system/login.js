@@ -55,7 +55,8 @@ class Login extends React.Component{
                             <img className="avatar" alt="avatar" />
                         </div>
                         <div className="password-holder">
-                            <input type="password" className="password" />
+                            <input type="text" className="username" id="loginPage-username" />
+                            <input type="password" className="password" id="loginPage-password" />
                         </div>
                     </div>
                 </div>
