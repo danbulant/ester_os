@@ -1,6 +1,6 @@
 
 function setBackground(){
-    let bg = "https://picsum.photos/1280/720.webp";
+    let bg = "https://picsum.photos/1366/768.webp";
     document.body.style.background = "url('" + bg + "')";
 }
 
