@@ -1,0 +1,19 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "Ester os client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danbulant/ester_os.git"
+  },
+  "author": "Daniel Bulant",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/danbulant/ester_os/issues"
+  },
+  "homepage": "https://github.com/danbulant/ester_os#readme"
+}
