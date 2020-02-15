@@ -25,20 +25,12 @@ class Welcome implements RenderDef {
         t.innerText = d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
 
         var w:RenderDef = this;
-        setTimeout(() => {
-            var d:Date = new Date();
+
+        var id:NodeJS.Timeout = setInterval(()=>{
+            if(w.state != RenderStates.Rendered)return clearInterval(id);
+
             t.innerText = d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
-
-            var id:NodeJS.Timeout = setInterval(()=>{
-                if(w.state != RenderStates.Rendered)return clearInterval(id);
-
-                var old = d;
-                var d = new Date();
-                if(old.getMinutes() == d.getMinutes() && old.getHours() == d.getHours())return;
-                
-                t.innerText = d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
-            }, 10000)
-        }, 60000 - d.getMilliseconds());//exactly every minute
+        }, 1000)
 
         el.appendChild(t);
 
