@@ -33,7 +33,10 @@ export default class Boot implements RendererDef {
         boot.appendChild(text);
 
         var w = new Welcome();
-        w.prepare().then(()=>{w.render()});
+        w.prepare().then(()=>{
+            w.render();
+            this.eject();
+        });
     }
     eject(){
         console.log("Boot renderer ejected");
