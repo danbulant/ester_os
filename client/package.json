@@ -4,9 +4,9 @@
   "description": "Client application for Ester OS",
   "private": true,
   "scripts": {
-    "start": "echo \"Working on it!\"",
-    "build": "webpack",
-    "dev": "echo \"Working on this!\""
+    "start": "echo \"Start live-server for ./build/ then run 'npm run dev-build' every time a change occurs to rebuild. This is going to be fixed someday.\"",
+    "build": "webpack --mode production",
+    "dev-build": "webpack --mode development"
   },
   "keywords": [],
   "author": "Daniel Bulant",
