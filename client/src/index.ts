@@ -1,9 +1,3 @@
-function component() {
-    const element = document.createElement('div');
+import boot from './managers/boot';
 
-    element.innerHTML = "Ester OS";
-
-    return element;
-}
-
-document.body.appendChild(component());
+boot();
