@@ -1,6 +1,6 @@
 import RenderDef from '../defs/renderer';
 import RenderStates from '../defs/renderStates';
-import Background from './images/backgrounds/nightTime.jpg';
+import './styles/welcome.css';
 
 class Welcome implements RenderDef {
     name = "welcome";
@@ -17,9 +17,8 @@ class Welcome implements RenderDef {
     async prepare(){
         this.element = document.createElement("div");
         var el = this.element;//LAZYNESS
-        el.className = "welcome-page";
+        el.className = "welcome-page";        
 
-        el.style.background = Background;
         this.state = RenderStates.Ready;
     }
     eject(){
