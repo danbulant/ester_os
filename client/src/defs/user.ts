@@ -9,7 +9,10 @@ interface User {
     avatar: URL;
     backgrounds: URL[];
 
+    fetchData(): Promise<User>;
+
     settings: UserSettings;
+    fetchSettings(): Promise<UserSettings>;
 }
 
 export default User;
