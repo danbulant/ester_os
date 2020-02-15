@@ -7,9 +7,12 @@ export default class Boot implements RendererDef {
     state = RenderStates.Ready;
 
     render(){
+        console.log("Boot renderer active");
+        this.state = RenderStates.Rendered;
 
     }
     eject(){
-
+        console.log("Boot renderer ejected");
+        this.state = RenderStates.Ejected;
     }
 }
