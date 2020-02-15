@@ -15,4 +15,6 @@ export default interface renderer {
     render(): void;
     eject(): void;
     hide?(): void;
+
+    prepare?(): Promise<void>;
 }
