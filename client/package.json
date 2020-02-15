@@ -4,7 +4,7 @@
   "description": "Client application for Ester OS",
   "private": true,
   "scripts": {
-    "start": "echo \"Start live-server for ./build/ then run 'npm run dev-build' every time a change occurs to rebuild. This is going to be fixed someday.\"",
+    "start": "webpack-dev-server",
     "build": "webpack --mode production",
     "dev-build": "webpack --mode development"
   },
@@ -18,7 +18,8 @@
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
     "copy-webpack-plugin": "^5.1.1"
