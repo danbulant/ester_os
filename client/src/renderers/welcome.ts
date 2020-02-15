@@ -1,5 +1,6 @@
 import RenderDef from '../defs/renderer';
 import RenderStates from '../defs/renderStates';
+import Login from './login';
 import './styles/welcome.css';
 
 class Welcome implements RenderDef {
@@ -9,9 +10,23 @@ class Welcome implements RenderDef {
 
     element: HTMLElement = null;
 
-    render(){
+    render() {
+        console.log("Welcome renderer active");
         if(!this.element)throw Error("Trying to render before renderer is renderable");
         document.body.appendChild(this.element);
+
+        var once = () => {
+            console.log("Opening login")
+            document.removeEventListener('keypress', once);
+
+            var l = new Login();
+            l.prepare().then(()=>{
+                l.render();
+                this.eject();
+            })
+        }
+        document.addEventListener('keypress', once, false);
+
         this.state = RenderStates.Rendered;
     }
     async prepare(){
@@ -35,8 +50,10 @@ class Welcome implements RenderDef {
         el.appendChild(t);
 
         this.state = RenderStates.Ready;
+        console.log("Welcome renderer prepared");
     }
-    eject(){
+    eject() {
+        console.log("Welcome renderer ejected");
         document.body.removeChild(this.element);
         this.state = RenderStates.Ejected;
     }
