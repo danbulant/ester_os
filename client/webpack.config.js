@@ -4,6 +4,10 @@ const path = require('path');
 module.exports = {
     entry: './src/index.ts',
     devtool: 'inline-source-map',
+    devServer: {
+        compress: true,
+        port: 8080
+    },
     module: {
         rules: [
             // TYPESCRIPT
@@ -22,8 +26,11 @@ module.exports = {
             },
             // IMAGES
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|svg|jpe?g|gif)$/,
                 use: [
+                    {
+                        loader: 'file-loader'
+                    },
                     'file-loader',
                 ],
             },
