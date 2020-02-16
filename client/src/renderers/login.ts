@@ -6,28 +6,35 @@ import './styles/login.css';
 class Login implements RenderDef {
     name = "login";
     state = RenderStates.Init;
-    removePrevious = true;
 
     element:HTMLElement = null;
+    counter:number = 0;
     listener:NodeJS.Timeout = null;
-    
     keyListener() {
-        clearTimeout(this.listener);
-        this.listener = setTimeout(() => { this.showWelcome() }, 15000);
+        this.counter = 0;
     }
 
     render(){
         if(!this.element)throw new Error("Cannot render without preparing login");
 
-        console.log("Login renderer active");
+        console.log("[LOGIN] Active");
 
-        this.listener = setTimeout(() => { this.showWelcome() }, 15000);
-        document.addEventListener('keypress', this.keyListener, false);
+        this.listener = setInterval(() => {
+            this.counter++;
+            if(this.counter > 14) this.showWelcome();
+        }, 1000);
+
+        var events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+        events.forEach((name)=>{
+            document.addEventListener(name, this.keyListener, true);
+        });
 
         document.body.appendChild(this.element);
     }
 
     showWelcome(){
+        if(this.state != RenderStates.Rendered)return;
+        
         var w = new Welcome();
         var p = w.prepare();
         this.element.classList.add("inactive");
@@ -45,17 +52,60 @@ class Login implements RenderDef {
         this.element = document.createElement("div");
         var el = this.element;
 
-        el.innerText = "Pls login";
         el.className = "login";
 
-        console.log("Login renderer prepared");
+        var loginForm = document.createElement("div");
+        loginForm.className = "login-form";
+        el.appendChild(loginForm);
+
+        var avatar = document.createElement("img");
+        avatar.className = "avatar";
+        avatar.src = "https://clinicforspecialchildren.org/wp-content/uploads/2016/08/avatar-placeholder.gif";
+        loginForm.appendChild(avatar);
+
+        var username = document.createElement("input");
+        username.type = "text";
+        username.className = "username";
+        username.placeholder = "Username";
+        loginForm.appendChild(username);
+
+        var password = document.createElement("input");
+        password.type = "password";
+        password.className = "password";
+        password.placeholder = "Password";
+        loginForm.appendChild(password);
+
+        var submit = document.createElement("button");
+        submit.innerText = "login";
+        submit.className = "submit";
+        submit.onclick = this.login;
+        loginForm.appendChild(submit);
+
+        var error = document.createElement("div");
+        error.innerText = "This user doesn't exist";
+        error.className = "error";
+        error.style.display = "none";
+        loginForm.appendChild(error);
+
+        console.log("[LOGIN] Ready");
+    }
+    login(){
+        console.log("[LOGIN] Submitting");
     }
     eject(){
-        console.log("Login renderer ejected");
+        if(this.state == RenderStates.Ejected)throw Error("Already ejected login");
+
+        console.log("[LOGIN] Ejected");
         this.state = RenderStates.Ejected;
 
         document.body.removeChild(this.element);
-        document.removeEventListener('keypress', this.keyListener);
+        clearInterval(this.listener);
+        this.counter = 0;
+
+        var events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart'];
+        events.forEach((name)=>{
+            document.removeEventListener(name, this.keyListener, true);
+        });
     }
 }
 
