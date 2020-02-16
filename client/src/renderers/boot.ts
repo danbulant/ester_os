@@ -12,11 +12,10 @@ something as fast as possible, so they don't stare at white screen.
 */
 export default class Boot implements RendererDef {
     name = "boot";
-    removePrevious = true;
     state = RenderStates.Ready;
 
     render(){
-        console.log("Boot renderer active");
+        console.log("[BOOT] Active");
         this.state = RenderStates.Rendered;
 
         const body = document.body;
@@ -39,7 +38,7 @@ export default class Boot implements RendererDef {
         });
     }
     eject(){
-        console.log("Boot renderer ejected");
+        console.log("[BOOT] Ejected");
         this.state = RenderStates.Ejected;
 
         document.body.removeChild(document.getElementById("boot"));

@@ -6,18 +6,17 @@ import './styles/welcome.css';
 class Welcome implements RenderDef {
     name = "welcome";
     state = RenderStates.Init;
-    removePrevious = false;
 
     element: HTMLElement = null;
 
     render() {
-        console.log("Welcome renderer active");
+        console.log("[WELCOME] Active");
         if(!this.element)throw Error("Trying to render before renderer is renderable");
         document.body.appendChild(this.element);
 
         var once = () => {
-            console.log("Opening login")
             document.removeEventListener('keypress', once);
+            document.removeEventListener('mousedown', once);
 
             var l = new Login();
             l.prepare().then(()=>{
@@ -26,6 +25,7 @@ class Welcome implements RenderDef {
             })
         }
         document.addEventListener('keypress', once, false);
+        document.addEventListener('mousedown', once, false);
 
         this.state = RenderStates.Rendered;
     }
@@ -43,7 +43,7 @@ class Welcome implements RenderDef {
 
         var id:NodeJS.Timeout = setInterval(()=>{
             if(w.state != RenderStates.Rendered){
-                console.log("Canceling timeout as welcome is no longer in state Rendered");
+                console.log("[WELCOME] Timeout cancelled, not in state Rendered");
                 return clearInterval(id);
             }
             var d: Date = new Date();
@@ -53,10 +53,10 @@ class Welcome implements RenderDef {
         el.appendChild(t);
 
         this.state = RenderStates.Ready;
-        console.log("Welcome renderer prepared");
+        console.log("[WELCOME] Ready");
     }
     eject() {
-        console.log("Welcome renderer ejected");
+        console.log("[WELCOME] Ejected");
         document.body.removeChild(this.element);
         this.state = RenderStates.Ejected;
     }
