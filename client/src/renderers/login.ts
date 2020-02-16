@@ -29,10 +29,16 @@ class Login implements RenderDef {
 
     showWelcome(){
         var w = new Welcome();
-        w.prepare().then(()=>{
+        var p = w.prepare();
+        this.element.classList.add("inactive");
+        setTimeout(()=>{
+            if(w.state == RenderStates.Ready){
+                w.render();
+            } else {
+                p.then(()=>{w.render()});
+            }
             this.eject();
-            w.render();
-        });
+        }, 1000)
     }
 
     async prepare(){
