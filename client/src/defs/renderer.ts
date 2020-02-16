@@ -3,7 +3,7 @@ export default interface renderer {
     removePrevious: boolean;
 
     /**
-     * Possible states:
+     * Possible states (see /defs/renderStates.ts):
      * 0    not-ready (cannot be rendered)
      * 1    ready (can be rendered)
      * 2    rendered (user can see this)
