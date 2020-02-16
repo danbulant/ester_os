@@ -1,7 +1,7 @@
 //Re-exporting for simpler importing
 
-import NotYetImplementedError from './notYetImplemented';
+import NotYetImplemented from './notYetImplemented';
+import InvalidUsername from './invalidUserName';
+import InvalidUUID from './invalidUUID';
 
-export default {
-    NotYetImplementedError
-};
+export {NotYetImplemented, InvalidUsername, InvalidUUID};
