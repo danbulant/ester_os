@@ -1,6 +1,5 @@
 export default interface renderer {
     name: string;
-    removePrevious: boolean;
 
     /**
      * Possible states (see /defs/renderStates.ts):
