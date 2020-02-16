@@ -1,5 +1,25 @@
 import boot from './managers/boot';
 
+//Remap console (so console.error is catched by error handler)
+var console = (function (oldCons) {
+    return {
+        ...oldCons,
+        error: function (text:any) {
+            if(text instanceof Error){
+                throw text;
+            } else {
+                throw Error(text);
+            }
+        }
+    };
+
+}(window.console));
+
+//Make console writeable
+type Writeable<T> = { -readonly [P in keyof T]: T[P] };
+
+(window as Writeable<Window>).console = console;
+
 //Handle errors
 window.onerror = (msg, url, line, col, error)=>{
     var e = document.createElement("div");
