@@ -2,6 +2,7 @@ import RenderDef from '../defs/renderer';
 import RenderStates from '../defs/renderStates';
 import Welcome from './welcome';
 import './styles/login.css';
+import LoginManager from '../managers/login';
 
 class Login implements RenderDef {
     name = "login";
@@ -34,7 +35,7 @@ class Login implements RenderDef {
 
     showWelcome(){
         if(this.state != RenderStates.Rendered)return;
-        
+
         var w = new Welcome();
         var p = w.prepare();
         this.element.classList.add("inactive");
@@ -89,9 +90,18 @@ class Login implements RenderDef {
 
         console.log("[LOGIN] Ready");
     }
+
     login(){
         console.log("[LOGIN] Submitting");
+        var u = this.element.getElementsByClassName("username")[0] as HTMLInputElement;
+        var p = this.element.getElementsByClassName("password")[0] as HTMLInputElement;
+
+        var l = new LoginManager();
+
+        console.log("Trying to login with user " + u.value + " and password " + p.value);
+        l.login(u.value, p.value).then(console.log);
     }
+
     eject(){
         if(this.state == RenderStates.Ejected)throw Error("Already ejected login");
 
