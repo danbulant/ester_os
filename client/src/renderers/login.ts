@@ -79,7 +79,7 @@ class Login implements RenderDef {
         var submit = document.createElement("button");
         submit.innerText = "login";
         submit.className = "submit";
-        submit.onclick = this.login;
+        submit.onclick = ()=>{this.login()};
         loginForm.appendChild(submit);
 
         var error = document.createElement("div");
