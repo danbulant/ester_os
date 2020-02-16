@@ -42,9 +42,11 @@ class Welcome implements RenderDef {
         var w:RenderDef = this;
 
         var id:NodeJS.Timeout = setInterval(()=>{
-            if(w.state != RenderStates.Rendered)return clearInterval(id);
-
-            t.innerText = d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
+            if(w.state != RenderStates.Rendered){
+                console.log("Canceling timeout as welcome is no longer in state Rendered");
+                return clearInterval(id);
+            }
+            this.element.innerText = d.getHours().toString().padStart(2, "0") + ":" + d.getMinutes().toString().padStart(2, "0");
         }, 1000)
 
         el.appendChild(t);
