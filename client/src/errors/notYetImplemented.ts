@@ -1,6 +1,6 @@
 import Error from './error';
 
-class NotYetImplementedError extends Error {
+class NotYetImplemented extends Error {
     name:string = "NotYetImplementedError";
     constructor(){
         super("This function wasn't yet implemented");
@@ -8,4 +8,4 @@ class NotYetImplementedError extends Error {
     }
 }
 
-export default NotYetImplementedError;
+export default NotYetImplemented;
